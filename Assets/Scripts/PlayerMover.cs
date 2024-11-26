@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    public float forwardSpeed = 5f;    // Скорость движения вперед
-    public float laneDistance = 3f;   // Расстояние между полосами
-    private int targetLane = 1;       // Текущая полоса (0 = левая, 1 = центральная, 2 = правая)
-    private Vector3 targetPosition;   // Позиция, куда перемещаемся
+    [SerializeField] private float forwardSpeed = 5f;    
+    [SerializeField] private float laneDistance = 3f;
+
+    private int targetLane = 1;       
+    private Vector3 targetPosition;
+    private Animator anim;
+
 
     void Start()
     {
-        // Начальная позиция - центральная полоса
         targetPosition = transform.position;
+        anim = GetComponent<Animator>();
+
     }
 
     void Update()
