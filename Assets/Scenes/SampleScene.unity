@@ -517,6 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 10
   laneDistance: 3
+  anim: {fileID: 1369236191}
 --- !u!4 &1952931049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2b611b1ac33a2a4e9f9679447f1ab82, type: 3}

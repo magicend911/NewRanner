@@ -4,16 +4,15 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float forwardSpeed = 5f;    
     [SerializeField] private float laneDistance = 3f;
+    [SerializeField] private Animator anim;
 
     private int targetLane = 1;       
     private Vector3 targetPosition;
-    private Animator anim;
 
 
     void Start()
     {
         targetPosition = transform.position;
-        anim = GetComponent<Animator>();
 
     }
 
@@ -25,11 +24,13 @@ public class PlayerMover : MonoBehaviour
         // Обработка ввода
         if (Input.GetKeyDown(KeyCode.A) && targetLane > 0)
         {
-            targetLane--; // Сдвигаемся влево
+            targetLane--;
+            anim.SetTrigger("ChangeLaneTrigger");
         }
         else if (Input.GetKeyDown(KeyCode.D) && targetLane < 2)
         {
-            targetLane++; // Сдвигаемся вправо
+            targetLane++;
+            anim.SetTrigger("ChangeLaneTrigger");
         }
 
         // Рассчитываем новую позицию на основе выбранной полосы
@@ -37,5 +38,10 @@ public class PlayerMover : MonoBehaviour
 
         // Перемещение персонажа к новой позиции
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 10f);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("JumpTrigger"); 
+        }
     }
 }
