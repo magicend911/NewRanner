@@ -26,11 +26,13 @@ public class PlayerMover : MonoBehaviour
         {
             targetLane--;
             anim.SetTrigger("ChangeLaneTrigger");
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else if (Input.GetKeyDown(KeyCode.D) && targetLane < 2)
         {
             targetLane++;
             anim.SetTrigger("ChangeLaneTrigger");
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         // Рассчитываем новую позицию на основе выбранной полосы
