@@ -18,10 +18,8 @@ public class PlayerMover : MonoBehaviour
 
     void Update()
     {
-        // Движение вперед
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
 
-        // Обработка ввода
         if (Input.GetKeyDown(KeyCode.A) && targetLane > 0)
         {
             targetLane--;
@@ -33,10 +31,7 @@ public class PlayerMover : MonoBehaviour
             anim.SetTrigger("ChangeLaneTrigger");
         }
 
-        // Рассчитываем новую позицию на основе выбранной полосы
         targetPosition = new Vector3((targetLane - 1) * laneDistance, transform.position.y, transform.position.z);
-
-        // Перемещение персонажа к новой позиции
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 10f);
 
         if (Input.GetKeyDown(KeyCode.Space))

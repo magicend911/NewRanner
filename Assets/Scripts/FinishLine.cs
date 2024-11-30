@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-    [SerializeField] private GameObject winText; // Панель победы
+    [SerializeField] private GameObject winText; 
 
     private void Start()
     {
-        winText.SetActive(false); // Скрываем панель при старте игры
+        winText.SetActive(false); 
     }
 
-    private void OnTriggerEnter(Collider other) // Срабатывает при пересечении триггера
+    private void OnTriggerEnter(Collider other) 
     {
-        if (other.GetComponent<Player>() != null) // Проверяем, есть ли компонент Player
+        if (other.GetComponent<Player>() != null)
         {
-            winText.SetActive(true); // Показываем панель победы
-            Time.timeScale = 0f; // Останавливаем время
+            winText.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
