@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-    [SerializeField] private GameObject winText; 
+    [SerializeField] private GameObject winText;
 
     private void Start()
     {
@@ -13,8 +13,7 @@ public class FinishLine : MonoBehaviour
     {
         if (other.GetComponent<Player>() != null)
         {
-            winText.SetActive(true);
-            Time.timeScale = 0f;
+            winText.SetActive(true);            
         }
     }
 }

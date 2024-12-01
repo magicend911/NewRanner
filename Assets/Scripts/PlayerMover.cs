@@ -5,15 +5,22 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float forwardSpeed = 5f;    
     [SerializeField] private float laneDistance = 3f;
     [SerializeField] private Animator anim;
+    [SerializeField] private Player player;
 
     private int targetLane = 1;       
     private Vector3 targetPosition;
 
-
+    private void OnEnable()
+    {
+        player.Died += OnDied;
+    }
+    private void OnDisable()
+    {
+        player.Died -= OnDied;
+    }
     void Start()
     {
         targetPosition = transform.position;
-
     }
 
     void Update()
@@ -38,5 +45,11 @@ public class PlayerMover : MonoBehaviour
         {
             anim.SetTrigger("JumpTrigger"); 
         }
+    }
+
+    private void OnDied()
+    {
+        anim.SetTrigger("GameOver");
+        forwardSpeed = 0;
     }
 }
